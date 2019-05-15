@@ -21,14 +21,13 @@ h2 {
 
 p {
     font-size: 1em;
-    text-align: left
+    text-align: left;
 }
 
 .container {
-    background: #6a6a6a;
-    width: 100vw;
+    background: #4a4a4a;
     height: 100vh;
-    padding: 2%;
+    padding: 0 2%;
 
     text-align: center;
 
