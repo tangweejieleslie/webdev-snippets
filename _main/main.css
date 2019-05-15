@@ -43,7 +43,6 @@ p {
 
 .container {
     background: #4a4a4a;
-    height: 100vh;
 
     text-align: center;
 
@@ -89,4 +88,39 @@ p {
 .footer ul li {
     display: inline;
     margin: 0 5px;
+}
+
+.codeSnippetMainContainer{
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    padding: 10px;
+    margin: 20px;
+    background: #2a2a2a;
+}
+
+.codeSnippetContainer{
+    display: flex;
+    flex-flow: row;
+    background: #2a2a2a;
+}
+
+.cscDesc {
+    max-width: 50%;
+    padding: 10px;
+}
+
+.cscVisual {
+    max-width: 50%;
+    padding: 10px;
+}
+
+code {
+    padding-left: 2em;
+    padding-right: 2em;
+    background: #8a8a8a;
+}
+
+.img_diagram {
+    max-width: 100%;
 }
