@@ -1,8 +1,18 @@
 body {
     padding: 0;
     margin: 0;
+    background: #000;
     color: #fafafa;
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+a {
+    color: #ffa500;
+    text-decoration: none;
+}
+
+.textAccent{
+    color: #ffa500;
 }
 
 h1{
@@ -19,6 +29,13 @@ h2 {
     letter-spacing: 4px;
 }
 
+h4 {
+    font-weight: 400;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
 p {
     font-size: 1em;
     text-align: left;
@@ -27,11 +44,49 @@ p {
 .container {
     background: #4a4a4a;
     height: 100vh;
-    padding: 0 2%;
 
     text-align: center;
 
     display: flex;
     flex-flow: column;
     flex: 1;
+}
+
+.mainContent{
+    margin: 0 5%;
+}
+
+.footer{
+    background: #3a3a3a;
+    text-align: center;
+    
+    font-size: 0.9em;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    /* align-items: center; */
+
+    padding: 10px;
+
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.footerItem{
+    /* margin: 10px; */
+    padding: 0 5%;
+}
+
+.footer ul{
+    list-style: none;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.footer ul li {
+    display: inline;
+    margin: 0 5px;
 }
