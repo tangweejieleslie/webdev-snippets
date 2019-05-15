@@ -1,22 +1,7 @@
-html {
-    height: 100%;
-}
-
 body {
-    display: flex;
-    flex-direction: column;
-
-    height: 100vh;
-    background: beige;
-
-    margin: 0;
-    background: #303030;
-    color: #fafafa;
-}
-
-div {
-    margin: 0;
     padding: 0;
+    margin: 0;
+    color: #fafafa;
 }
 
 .container {
@@ -37,12 +22,15 @@ div {
     position: fixed;
     width: 100%;
     top: 0;
-    height: 100px;
-    
+ 
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+
+    /* fixed header */
+    height: 150px;
+    overflow: none;
 }
 
 .header ul{
@@ -61,7 +49,9 @@ div {
 .mainContent{
     background: #4a4a4a;
     margin: 0 5%;
-    margin-top: 100px; 
+
+    /* fixed header */
+    margin-top: 150px; 
 }
 
 .footer{
