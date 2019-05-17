@@ -1,21 +1,28 @@
 console.log('Before'); // console will display this first, SYNC
 
-const user = getUser(1); 
-console.log(user); // will return undefined, because user will be returned 2 seconds later
+const user = getUser(1, function(user) {
+    console.log('User: ', user);
+
+    getRepo(user.username, (repos)=>{
+        console.log('Repos', repos);
+    });
+}); 
 
 console.log('After'); // console will display this SECOND, SYNC
 
 
-// Set timeout is Async, non-blocking function, this THIRD, after 2seconds
-// Async != multiple thread 
-function getUser(id){
+// Callback = function that will be called when data is ready
+function getUser(id, callback){
     // Set timeout to simulate long running operation
     setTimeout(()=>{ 
         console.log('Reading a user from a database');
-        return {id: id, user: "twjl"};
+        callback({id: id, username: "twjl"});
     }, 2000);
-
-    return 1;
 }
 
-// Call
+function getRepo(username, callback){
+    setTimeout(()=>{
+        console.log('Calling API...');
+        callback(['repo1', 'repo2']);
+    },2000);
+}
