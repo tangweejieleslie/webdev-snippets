@@ -7,6 +7,17 @@ const app = express();
 app.use(express.json());
 
 
+// Custom Middleware. Middleware functions are called in sequence
+
+// Abstracting middleware code into separate module
+app.use(require('./middleware'));
+
+app.use(function(req,res,next){
+    console.log('Authenticating...');
+    next();
+});
+
+
 
 // SET UP PORT
 const port = process.env.PORT || 3000;
@@ -120,3 +131,5 @@ function validateData(data){
 
     return Joi.validate(data,schema);
 }
+
+
