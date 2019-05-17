@@ -5,6 +5,10 @@ const app = express();
 const config = require('config');
 const startupDebug = require('debug')('app:startup');
 
+// *SET TEMPLATING
+app.set('view engine', 'pug');
+app.set('views', './views'); // set the directory for views
+
 // *MIDDLEWARE
 // Adding Middleware to use JSON processing in POST , e.g. req.body.name
 app.use(express.json());
@@ -21,6 +25,8 @@ app.use(function(req,res,next){
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+
+
 
 // *ENVIRONMENT
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`); // returns undefined if not set
@@ -64,7 +70,8 @@ var mockData = [
 
 // *Basic GET request
 app.get('/', (req,res) =>{   
-    res.send("Hello World! This is the default page.");
+    // res.send("Hello World! This is the default page.");
+    res.render('index', {title: 'Express App Sandbox', message: 'Hello World! This is generated through templating engine.'})
 });
 
 // GET req with params
