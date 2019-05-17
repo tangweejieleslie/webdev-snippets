@@ -1,0 +1,7 @@
+{
+    "name": "Express Application - Development",
+    "someProperties": {
+        "title": "some random information about development properties",
+        "desc": "this is just to show that we can use objects in here"
+    }
+}

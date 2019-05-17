@@ -1,11 +1,12 @@
-// SET UP EXPRESS APP
+// *SET UP EXPRESS APP and various modules
 const Joi = require('joi');
 const express = require('express');
 const app = express();
+const config = require('config');
 
+// *MIDDLEWARE
 // Adding Middleware to use JSON processing in POST , e.g. req.body.name
 app.use(express.json());
-
 
 // Custom Middleware. Middleware functions are called in sequence
 
@@ -20,7 +21,7 @@ app.use(function(req,res,next){
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-// Environment
+// *ENVIRONMENT
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`); // returns undefined if not set
 console.log(`app: ${app.get('env')}`);
 
@@ -31,12 +32,17 @@ if(app.get('env') === 'development'){
 
 // WINDOWS: `set NODE_ENV=production` in cli to set environment
 
-// SET UP PORT
+// *CONFIGURATION
+console.log('Application Name: ' + config.get('name'));
+console.log('Password: ' + config.get('someProperties.password'));
+
+
+// *SET UP PORT
 const port = process.env.PORT || 3000;
 
 app.listen(port);
 
-// MOCK DATA SET
+// *MOCK DATA SET
 var mockData = [
     {
         id: 1,
@@ -54,7 +60,7 @@ var mockData = [
     }
 ];
 
-// Basic GET request
+// *Basic GET request
 app.get('/', (req,res) =>{   
     res.send("Hello World! This is the default page.");
 });
@@ -78,7 +84,7 @@ app.get('/api/mockdata/:id', (req,res) =>{
 
 
 
-// POST req with validation
+// *POST req with validation
 app.post('/api/mockdata', (req,res) =>{
     // Input Validation handling
     const {error} = validateData(req.body);
@@ -97,7 +103,7 @@ app.post('/api/mockdata', (req,res) =>{
 
 
 
-// PUT req, basically update data
+// *PUT req, basically update data
 app.put('/api/mockdata/:id', (req,res) =>{   
     // Get mockdata with the given id into a const
     const data = mockData.find(x => x.id === parseInt(req.params.id));
@@ -118,7 +124,7 @@ app.put('/api/mockdata/:id', (req,res) =>{
 
 
 
-// DELETE req
+// *DELETE req
 app.delete('/api/mockdata/:id', (req,res) =>{   
     // Get mockdata with the given id into a const
     const data = mockData.find(x => x.id === parseInt(req.params.id));
@@ -134,7 +140,7 @@ app.delete('/api/mockdata/:id', (req,res) =>{
 });
 
 
-// Simple data validation 
+// *Simple data validation 
 function validateData(data){
     // Set up validation schema, i.e. rules
     const schema = {

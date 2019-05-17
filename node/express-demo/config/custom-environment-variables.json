@@ -1,0 +1,5 @@
+{
+    "someProperties": {
+        "password": "env_var_password"
+    }
+}
