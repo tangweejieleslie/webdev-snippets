@@ -18,10 +18,18 @@ app.use(function(req,res,next){
 });
 
 app.use(express.urlencoded({extended: true}));
-
 app.use(express.static('public'));
 
+// Environment
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`); // returns undefined if not set
+console.log(`app: ${app.get('env')}`);
 
+// app.get('env') will return 'development' by default
+if(app.get('env') === 'development'){
+    console.log("In development mode");
+}
+
+// WINDOWS: `set NODE_ENV=production` in cli to set environment
 
 // SET UP PORT
 const port = process.env.PORT || 3000;
