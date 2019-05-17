@@ -3,6 +3,7 @@ const Joi = require('joi');
 const express = require('express');
 const app = express();
 const config = require('config');
+const startupDebug = require('debug')('app:startup');
 
 // *MIDDLEWARE
 // Adding Middleware to use JSON processing in POST , e.g. req.body.name
@@ -28,6 +29,7 @@ console.log(`app: ${app.get('env')}`);
 // app.get('env') will return 'development' by default
 if(app.get('env') === 'development'){
     console.log("In development mode");
+    startupDebug('Logging debug message in development mode...');
 }
 
 // WINDOWS: `set NODE_ENV=production` in cli to set environment
