@@ -45,7 +45,7 @@ async function getCourses(){
         console.log(courses);
 }
 
-getCourses()
+// getCourses()
 
 // Comparison Operators in Queries
 // https://docs.mongodb.com/manual/reference/operator/query-comparison/
@@ -55,11 +55,17 @@ async function getCoursesOp(){
     // Functions similarly to a promise
     const courses = await Course
         // .find({name: {$eq:'Name of Course 2' }})
-        .find( {$or:[{ name:'Name of Course 3'},{author: 'Author of Course 2' }]} )
+        // .find( {$or:[{ name:'Name of Course 3'},{author: 'Author of Course 2' }]} )
+        .find({name: /.*3.*/i })
         // .find({author: '2', isPublished: true})
         .limit(10) // limits results
         .sort({name: -1, tags: 1}) // -1 = descending order
         console.log(courses);
 }
+
+// Sample Queries for Strings with Regular Expressions 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+// .find({name: { /.*3.*/i }})
 
 getCoursesOp();
