@@ -35,6 +35,7 @@ async function createCourse(){
 
 // Basic Query
 async function getCourses(){
+    console.log("Getting courses...");
     // Functions similarly to a promise
     const courses = await Course
         .find()
@@ -44,4 +45,20 @@ async function getCourses(){
         console.log(courses);
 }
 
-getCourses();
+getCourses()
+
+// Comparison Operators in Queries
+// https://docs.mongodb.com/manual/reference/operator/query-comparison/
+
+async function getCoursesOp(){
+    console.log("Getting courses...");
+    // Functions similarly to a promise
+    const courses = await Course
+        .find({name: {$eq:'Name of Course 2' }})
+        // .find({author: '2', isPublished: true})
+        .limit(10) // limits results
+        .sort({name: -1, tags: 1}) // -1 = descending order
+        console.log(courses);
+}
+
+getCoursesOp();
