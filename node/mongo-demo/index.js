@@ -18,8 +18,8 @@ const courseSchema = new mongoose.Schema({
 const Course = mongoose.model('Course', courseSchema);
 // Create an instance for passing into MongoDB
 const course = new Course({
-    name: 'Name of Course 2',
-    author: 'Author of Course',
+    name: 'Name of Course 3',
+    author: 'Author of Course 2',
     tags: ['tag1', 'tag 2', 'tag 3' ],
     isPublished: true
 });
@@ -31,7 +31,7 @@ async function createCourse(){
 };
 
 // Calling Async Function
-// createCourse();
+createCourse();
 
 // Basic Query
 async function getCourses(){
@@ -54,7 +54,8 @@ async function getCoursesOp(){
     console.log("Getting courses...");
     // Functions similarly to a promise
     const courses = await Course
-        .find({name: {$eq:'Name of Course 2' }})
+        // .find({name: {$eq:'Name of Course 2' }})
+        .find( {$or:[{ name:'Name of Course 3'},{author: 'Author of Course 2' }]} )
         // .find({author: '2', isPublished: true})
         .limit(10) // limits results
         .sort({name: -1, tags: 1}) // -1 = descending order
