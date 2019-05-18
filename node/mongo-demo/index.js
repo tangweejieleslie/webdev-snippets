@@ -31,5 +31,17 @@ async function createCourse(){
 };
 
 // Calling Async Function
-createCourse();
+// createCourse();
 
+// Basic Query
+async function getCourses(){
+    // Functions similarly to a promise
+    const courses = await Course
+        .find()
+        // .find({author: '2', isPublished: true})
+        .limit(10) // limits results
+        .sort({name: -1, tags: 1}) // -1 = descending order
+        console.log(courses);
+}
+
+getCourses();
