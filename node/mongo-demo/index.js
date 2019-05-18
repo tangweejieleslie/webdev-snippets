@@ -13,3 +13,18 @@ const courseSchema = new mongoose.Schema({
     isPublished: Boolean
 });
 
+const Course = mongoose.model('Course', courseSchema);
+const course = new Course({
+    name: 'Name of Course 2',
+    author: 'Author of Course',
+    tags: ['tag1', 'tag 2', 'tag 3' ],
+    isPublished: true
+});
+
+async function createCourse(){
+    const result = await course.save();
+    console.log(result);
+};
+
+createCourse();
+
