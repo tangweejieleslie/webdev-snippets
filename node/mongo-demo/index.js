@@ -45,7 +45,7 @@ async function getCourses(){
         console.log(courses);
 }
 
-// getCourses()
+getCourses()
 
 // Comparison Operators in Queries
 // https://docs.mongodb.com/manual/reference/operator/query-comparison/
@@ -69,3 +69,40 @@ async function getCoursesOp(){
 // .find({name: { /.*3.*/i }})
 
 getCoursesOp();
+
+async function updateCourseQFA(id){
+    // Query First Approach
+
+    // 1. Find course by ID
+    const course = await Course.findById;
+    if(!course) return;
+
+    // 2. Modify Properties. Two approaches
+    course.isPublished = true;
+    course.author= 'Another Author';
+    
+    // course.set({
+    //     isPublished = true,
+    //     author: 'Another Author'
+    // });
+
+    // 3. Save and return
+    const result = await course.save();
+    console.log(result);
+
+    // Update First Approach
+    // Update directly
+    // Optional: get the updated doc
+    
+}
+
+updateCourseQFA('5cdf7167376adc3a7405157e');
+getCourses()
+
+async function updateCourseUFA(id){
+    // Update First Approach
+    // Update directly
+    // Optional: get the updated doc
+    
+}
+
